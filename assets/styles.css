@@ -432,7 +432,6 @@ body.index {
 /* Основной контент */
 .container {
     max-width: 1200px;
-    margin: 2rem auto;
     padding: 2rem;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -529,21 +528,46 @@ h1 {
     }
 }
 
-/* Стили для страницы добавления гостя */
 .add-guest-page {
     background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
     color: white;
-    min-height: 100vh;
 }
 
+
 .guest-form {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 100%;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     padding: 2rem;
     border-radius: 20px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    height: 300px;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .guest-form {
+        padding: 1.5rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+.guest-form::-webkit-scrollbar {
+    width: 8px;
+}
+
+.guest-form::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.guest-form::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
 }
 
 .form-group {
@@ -601,12 +625,48 @@ h1 {
     .guest-form {
         padding: 1.5rem;
     }
+
+    .guest-table {
+        display: block;
+        min-width: auto;
+    }
+
+    .guest-table thead {
+        display: none;
+    }
+
+    .guest-table tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        padding: 1rem;
+    }
+
+    .guest-table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border: none;
+    }
+
+    .guest-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        margin-right: 1rem;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .actions {
+        justify-content: flex-end;
+        margin-top: 1rem;
+    }
 }
 
 .guests-page {
     background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
     color: white;
-    min-height: 100vh;
 }
 
 .header-row {
@@ -619,28 +679,58 @@ h1 {
 }
 
 .guest-list-container {
+    max-width: 100%;
+    overflow-x: auto;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 20px;
-    padding: 1.5rem;
-    overflow-x: auto;
+    padding: 1rem;
+    height: 400px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+    overflow-y: auto;
 }
 
+/* Стили для таблицы */
 .guest-table {
     width: 100%;
+    min-width: 800px;
     border-collapse: collapse;
+    white-space: nowrap;
 }
 
-.guest-table th, .guest-table td {
+.guest-table th,
+.guest-table td {
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .guest-table th {
-    font-weight: 600;
-    background: rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+
+.guest-list-container::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.guest-list-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.guest-list-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.guest-list-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
 }
 
 .guest-table tr:hover {
@@ -694,4 +784,12 @@ h1 {
     .actions {
         justify-content: flex-end;
     }
+}
+
+.add-guest-page. .container {
+    margin: 0!important;
+}
+
+.guests-page. .container {
+    margin: 0!important;
 }
